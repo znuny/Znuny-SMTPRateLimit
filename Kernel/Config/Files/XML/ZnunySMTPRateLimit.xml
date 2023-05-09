@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<otrs_config version="2.0" init="Config">
+    <Setting Name="SendmailModule::RateLimit" Required="0" Valid="1" ConfigLevel="200">
+        <Description Translatable="1">Limits the amount of e-mails which are sent with in one batch. Disable this setting to have no limit.</Description>
+        <Navigation>Core::Email</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="^[0-9]{1,6}$">30</Item>
+        </Value>
+    </Setting>
+
+    <Setting Name="SendmailModule::RateLimitPerSenderAddress" Required="1" Valid="1">
+        <Description Translatable="1">Counts the limit defined in 'SendmailModule::RateLimit' per sender address.</Description>
+        <Navigation>Core::Email</Navigation>
+        <Value>
+            <Item ValueType="Select" SelectedID="0">
+                <Item ValueType="Option" Value="1" Translatable="1">yes</Item>
+                <Item ValueType="Option" Value="0" Translatable="1">no</Item>
+            </Item>
+        </Value>
+    </Setting>
+</otrs_config>
