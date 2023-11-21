@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <otrs_package version="1.0">
     <Name>Znuny-SMTPRateLimit</Name>
-    <Version>6.5.1</Version>
+    <Version>6.5.2</Version>
     <Framework>6.5.x</Framework>
     <Vendor>Znuny GmbH</Vendor>
     <URL>http://znuny.com/</URL>
     <License>GNU AFFERO GENERAL PUBLIC LICENSE Version 3, November 2007</License>
     <Description Lang="en">Adds the possibility to configure a rate limit for SMTP.</Description>
     <Description Lang="de">Erlaubt die Anzahl der zu versendenden E-Mails zu limitieren.</Description>
+    <ChangeLog Version="6.5.2" Date="2023-11-21 08:36:56 +0100">Updated Custom/Kernel/System/Console/Command/Maint/Email/MailQueue.pm to version with 'send-timeout' option.</ChangeLog>
     <ChangeLog Version="6.5.1" Date="2023-06-15 18:01:29 +0200">Initial release for Znuny LTS 6.5</ChangeLog>
     <Filelist>
         <File Permission="660" Location="Custom/Kernel/System/Console/Command/Maint/Email/MailQueue.pm"/>
