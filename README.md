@@ -1,11 +1,9 @@
 ![Znuny logo](https://www.znuny.com/assets/images/logo_small.png)
 
+Znuny-SMTPRateLimit
+===================
 
-SMTPRateLimit
-=============
-
-This add-on limits the amount of e-mails being send. Such a rate limit is required by certain provider.
-If work for every possible sending method of the setting SendmailModule that is part of Znuny.
+This add-on limits the number of emails that can be sent at once. This is necessary for some email providers, such as Microsoft Office 365. It works for every possible sending method of the setting SendmailModule that is part of Znuny.
 
 **Prerequisites**
 
@@ -13,15 +11,7 @@ If work for every possible sending method of the setting SendmailModule that is 
 
 **Installation**
 
-Use the online repository or download the [package](https://addons.znuny.com/api/addon_repos/public/2959/latest) and install it via admin interface -> package manager.
-
-**Configuration**
-
-See the system configuration of the modules for the possible settings.
-
-**Download**
-
-Download the [latest version](https://addons.znuny.com/api/addon_repos/public/2959/latest).
+Use the online repository **Znuny Open Source Add-ons** from the package manager to install the add-on. From the command line use this command: `bin/znuny.Console.pl Admin::Package::Install  https://addons.znuny.com/public/:Znuny-SMTPRateLimit`
 
 **Commercial Support**
 

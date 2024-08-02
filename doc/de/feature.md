@@ -1,3 +1,3 @@
 # Funktionalität
 
-Diese Add-on limitiert die Anzahl der E-Mails die auf einmal versendet werden. Das ist notwendig für manche E-Mail-Provider, wie zum Beispiel fürMicrosoft Office 365.
+Dieses Add-on limitiert die Anzahl der E-Mails, die in einem Durchgang versendet werden. Dies ist notwendig für manche E-Mail-Provider, wie zum Beispiel Microsoft Office 365.
