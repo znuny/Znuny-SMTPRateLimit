@@ -7,7 +7,7 @@ This add-on limits the number of emails that can be sent at once. This is necess
 
 **Prerequisites**
 
-- Znuny LTS 6.5
+- Znuny 7.1
 
 **Installation**
 

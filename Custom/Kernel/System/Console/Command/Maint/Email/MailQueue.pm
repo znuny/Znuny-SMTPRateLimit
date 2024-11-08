@@ -2,8 +2,7 @@
 # Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
 # Copyright (C) 2012 Znuny GmbH, https://znuny.com/
 # --
-# $origin: Znuny - 42528133cdf3cc4338008c63c2122ecb5bb13b92 - Kernel/System/Console/Command/Maint/Email/MailQueue.pm
-# Copyright (C) 2012 Znuny GmbH, https://znuny.com/
+# $origin: znuny - d61d71461fb1a7c963e3ccccd149bbf7940db8d6 - Kernel/System/Console/Command/Maint/Email/MailQueue.pm
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -20,7 +19,11 @@ use parent qw(Kernel::System::Console::BaseCommand);
 use Kernel::System::VariableCheck qw(:all);
 
 our @ObjectDependencies = (
+# ---
+# Znuny-SMTPRateLimit
+# ---
     'Kernel::Config',
+# ---
     'Kernel::System::MailQueue',
     'Kernel::System::PID',
 );
@@ -190,11 +193,12 @@ sub Send {
     my ( $Self, %Param ) = @_;
 
     my $MailQueueObject = $Kernel::OM->Get('Kernel::System::MailQueue');
+
 # ---
 # Znuny-SMTPRateLimit
 # ---
-#
-    # get config object
+#     my $List = $MailQueueObject->List();
+
     my $ConfigObject       = $Kernel::OM->Get('Kernel::Config');
     my $RateLimit          = $ConfigObject->Get('SendmailModule::RateLimit') // 30;
     my $RateLimitPerSender = $ConfigObject->Get('SendmailModule::RateLimitPerSenderAddress') // 0;
@@ -208,16 +212,17 @@ sub Send {
         for my $FilterItem (@$UnfilteredList) {
             my $Sender = $FilterItem->{Recipient} // 'Default';
             $SenderAddressCounter{$Sender}++;
+
             next FILTERITEM if $SenderAddressCounter{$Sender} > $RateLimit;
+
             push @{$List}, $FilterItem;
         }
 
     } else {
         $List = $MailQueueObject->List( Limit => $RateLimit );
     }
-
-#    my $List = $MailQueueObject->List();
 # ---
+
     if ( !IsArrayRefWithData($List) ) {
         $Self->Print("\n<yellow>No messages available for sending.</yellow>\n");
         return 1;

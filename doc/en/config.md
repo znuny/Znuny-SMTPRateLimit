@@ -2,7 +2,7 @@
 
 ## SendmailModule::RateLimit
 
-Defines the number of emails sent at once. The limit is is used for every single execution of the console command `bin/otrs.Console.pl Maint::Email::MailQueue --send` and therefore also for the cron task `Daemon::SchedulerCronTaskManager::Task###MailQueueSend` that is executed by the Znuny daemon.
+Defines the number of emails sent at once. The limit is is used for every single execution of the console command `bin/znuny.Console.pl Maint::Email::MailQueue --send` and therefore also for the cron task `Daemon::SchedulerCronTaskManager::Task###MailQueueSend` that is executed by the Znuny daemon.
 
 The limit is valid for every configured sendmail module.
 
